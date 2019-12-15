@@ -142,7 +142,7 @@
                 android:drawablePadding="10dp"
                 android:singleLine="true"
                 android:ellipsize="end"
-                android:text="Zaman"
+                android:text="Zaman"/>
 
 
         </RelativeLayout>

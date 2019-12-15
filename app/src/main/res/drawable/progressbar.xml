@@ -7,7 +7,7 @@
                 android:centerColor="#0b131e"
                 android:centerY="1.0"
                 android:endColor="#0d1522"
-                android:angle="270"
+                android:angle="360"
                 />
         </shape>
     </item>
@@ -20,7 +20,7 @@
                     android:centerColor="#20217E"
                     android:centerY="1.0"
                     android:endColor="#06101d"
-                    android:angle="270"
+                    android:angle="360"
                     />
             </shape>
         </clip>

@@ -20,23 +20,27 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/news_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="16dp"
-                android:text="@string/news_header"
+                android:text=""
                 android:textSize="19sp"
                 android:textStyle="bold"
                 />
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recylerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="vertical" />
+
+
+                <include  layout="@layout/news_item" android:id="@+id/news1" />
+                <include  layout="@layout/news_item" android:id="@+id/news2" />
+                <include  layout="@layout/news_item" android:id="@+id/news3" />
+                <include  layout="@layout/news_item" android:id="@+id/news4" />
+                <include  layout="@layout/news_item" android:id="@+id/news5" />
+
 
         </LinearLayout>
 
