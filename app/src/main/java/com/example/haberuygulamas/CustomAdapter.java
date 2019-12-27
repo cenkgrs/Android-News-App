@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import static android.view.View.GONE;
@@ -23,26 +25,32 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
 
     public CustomAdapter(Context context, int layoutResourceId, ArrayList<news_item> haberList) {
         super(context, layoutResourceId, haberList);
+        System.out.println("Adapter created");
         this.layoutResourceId = layoutResourceId;
+        System.out.println(layoutResourceId);
         this.context = context;
+        System.out.println(context);
         this.haberList = haberList;
+        System.out.println(haberList);
     }
 
     public void setListData(ArrayList<news_item> haberList){
         this.haberList = haberList;
         notifyDataSetChanged();
+        System.out.println("Got here so far 1");
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        System.out.println("Got here so far 2");
         View row = convertView;
 
-        CustomAdapter.ViewHolder holder;
+        ViewHolder holder;
 
         if (row == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            row = inflater.inflate(R.layout.news_item, parent, false);
-            holder = new CustomAdapter.ViewHolder();
+            row = inflater.inflate(layoutResourceId, parent, false);
+            holder = new ViewHolder();
             holder.titleTextView = (TextView) row.findViewById(R.id.title);
             holder.imageView = (ImageView) row.findViewById(R.id.img);
             holder.descriptionTextView = (TextView) row.findViewById(R.id.desc);
@@ -75,7 +83,7 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
 
         if ((item.getImage()).toString() != "null" && !TextUtils.isEmpty(item.getImage())) {
 
-            //Picasso.with(context).load(item.getImage()).into(holder.imageView);
+            Picasso.get().load(item.getImage()).into(holder.imageView);
 
 
         } else {

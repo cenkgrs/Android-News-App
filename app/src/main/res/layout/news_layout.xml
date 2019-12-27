@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!--
             <TextView
                 android:id="@+id/news_header"
                 android:layout_width="match_parent"
@@ -32,6 +33,7 @@
                 android:textSize="19sp"
                 android:textStyle="bold"
                 />
+            -->
 
             <ListView
                 android:id="@+id/news_list_view"

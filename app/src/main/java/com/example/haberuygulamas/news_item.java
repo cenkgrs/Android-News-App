@@ -6,6 +6,16 @@ public class news_item {
     private String description;
     private String url;
 
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    private String source;
+
     public String getImage() {
         return image;
     }

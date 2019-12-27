@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,12 +21,10 @@ import java.util.ArrayList;
 
 public class NewsActivity extends AppCompatActivity {
 
-    String News_url;
-
     private ListView lv;
     private CustomAdapter adp;
     private ArrayList<news_item> haberList;
-
+    private String News_url;
 
 
 
@@ -39,16 +36,16 @@ public class NewsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         String header = extras.getString(MainActivity.EXTRA_MESSAGE);
-        TextView txv = (TextView) findViewById(R.id.news_header);
-        txv.setText(header);
+        //TextView txv = (TextView) findViewById(R.id.news_header);
+        //txv.setText(header);
 
         News_url = "https://newsapi.org/v2/everything?q=bitcoin&from=2019-11-27&sortBy=publishedAt&apiKey=399bcfeeb90d4b0684d30c177744c525";
+        News_url = "https://newsapi.org/v2/top-headlines?country=tr&apiKey=399bcfeeb90d4b0684d30c177744c525";
         lv = (ListView) findViewById(R.id.news_list_view);
 
 
         haberList = new ArrayList<>();
-        adp = new CustomAdapter(this, R.layout.news_item, haberList);
-        lv.setAdapter(adp);
+
 
 
         new AsyncHttpTask().execute(News_url);
@@ -99,26 +96,45 @@ public class NewsActivity extends AppCompatActivity {
         try {
             JSONObject response = new JSONObject(result);
             JSONArray posts = response.optJSONArray("articles");
+
             news_item item;
             for (int i = 0; i < posts.length(); i++){
                 JSONObject post = posts.optJSONObject(i);
+                /*JSONArray sources = post.optJSONArray("sources");
+                JSONObject source = sources.optJSONObject(0);*/
                 String title = post.optString("title");
-                Log.i("title", title);
                 String image = post.optString("urlToImage");
                 String description = post.optString("description");
                 String url = post.optString("url");
+                //String source_name = source.optString("name");
                 item = new news_item();
                 item.setTitle(title);
                 item.setImage(image);
                 item.setUrl(url);
                 item.setDescription(description);
-
+                Log.i("HABER DESCTPİNTİONU", description);
+                //Log.i("SOURCE", source_name);
                 haberList.add(item);
+                //System.out.println("Data is:" + item.getTitle());
 
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                adp = new CustomAdapter(NewsActivity.this, R.layout.news_item, haberList);
+                lv.setAdapter(adp);
+                // Stuff that updates the UI
+
+            }
+        });
 
     }
+
+
+
 }

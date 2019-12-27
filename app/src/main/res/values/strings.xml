@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Haberlerim</string>
+    <string name="news_activity_title">Popüler Haberler</string>
     <string name="news_header">En Son Haberler</string>
     <string name="header">Başlık</string>
     <string name="source">Kaynak</string>
