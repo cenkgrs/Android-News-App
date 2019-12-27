@@ -5,21 +5,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color"
     >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/news_Linear_Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <Toolbar
+
+                android:id="@+id/navigation"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/perfectColor"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_search"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"/>
+
+            </Toolbar>
             <!--
             <TextView
                 android:id="@+id/news_header"
@@ -34,7 +48,12 @@
                 android:textStyle="bold"
                 />
             -->
-
+            <ProgressBar
+                android:id="@+id/progress_load_photo"
+                android:progressDrawable="@drawable/progressbar"
+                android:layout_centerInParent = "true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
             <ListView
                 android:id="@+id/news_list_view"
                 android:layout_width="fill_parent"
@@ -55,9 +74,8 @@
 
 
 
-        </RelativeLayout>
+        </LinearLayout>
 
-    </ScrollView>
 
 
 

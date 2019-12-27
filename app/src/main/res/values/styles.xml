@@ -1,17 +1,37 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.Design.NoActionBar." parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
 
-        <item name="colorPrimaryDark">@color/darkBlueNav</item>
+        <item name="colorPrimary">@color/perfectColor</item>
+        <item name="colorPrimaryDark">@color/perfectColor</item>
+        <item name="colorAccent">@color/perfectColor</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/white</item>
 
     </style>
 
     <style name="navStyle" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:colorBackground">@color/darkBlueNav</item>
+        <item name="android:colorBackground">@color/perfectColor</item>
         <item name="android:textColor">@color/grayFont</item>
     </style>
+
+    <style name="ContentTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+
+        <item name="actionBarItemBackground">@color/perfectColor</item>
+        <item name="android:headerBackground">@color/perfectColor</item>
+
+    </style>
+
+    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@android:style/TextAppearance">
+
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/grayFont</item>
+
+    </style>
+
+
 
 </resources>

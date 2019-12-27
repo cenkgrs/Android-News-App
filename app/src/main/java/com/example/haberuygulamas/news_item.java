@@ -1,10 +1,44 @@
 package com.example.haberuygulamas;
 
-public class news_item {
+import java.io.Serializable;
+
+public class news_item implements Serializable {
     private String image;
     private String title;
     private String description;
     private String url;
+    private String source;
+    private String author;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    private String content;
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    private String time;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+
 
     public String getSource() {
         return source;
@@ -14,7 +48,7 @@ public class news_item {
         this.source = source;
     }
 
-    private String source;
+
 
     public String getImage() {
         return image;

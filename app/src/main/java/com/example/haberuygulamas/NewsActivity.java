@@ -1,10 +1,14 @@
 package com.example.haberuygulamas;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +29,7 @@ public class NewsActivity extends AppCompatActivity {
     private CustomAdapter adp;
     private ArrayList<news_item> haberList;
     private String News_url;
+    private ProgressBar newProgBar;
 
 
 
@@ -33,14 +38,37 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_layout);
 
+
+
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         String header = extras.getString(MainActivity.EXTRA_MESSAGE);
+        newProgBar = (ProgressBar) findViewById(R.id.progress_load_photo);
+        if(header == "1"){
+            System.out.println("Sports news");
+            News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=sports&apiKey=399bcfeeb90d4b0684d30c177744c525";
+        }
+        else if(header == "En Son Teknoloji Haberleri"){
+            News_url = "https://newsapi.org/v2/top-headlines?country=tr&apiKey=399bcfeeb90d4b0684d30c177744c525";
+        }
+        else if(header == "En Son Ekonomi Haberleri"){
+            News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=business&apiKey=399bcfeeb90d4b0684d30c177744c525";
+        }
+        else if(header == "En Son Sağlık Haberleri"){
+            News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=health&apiKey=399bcfeeb90d4b0684d30c177744c525";
+        }
+        else if(header == "En Son Bilim Haberleri"){
+            News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=science&apiKey=399bcfeeb90d4b0684d30c177744c525";
+        }
+        else{
+            System.out.println("Default news");
+            News_url = "https://newsapi.org/v2/top-headlines?country=tr&apiKey=399bcfeeb90d4b0684d30c177744c525";
+        }
         //TextView txv = (TextView) findViewById(R.id.news_header);
         //txv.setText(header);
 
-        News_url = "https://newsapi.org/v2/everything?q=bitcoin&from=2019-11-27&sortBy=publishedAt&apiKey=399bcfeeb90d4b0684d30c177744c525";
-        News_url = "https://newsapi.org/v2/top-headlines?country=tr&apiKey=399bcfeeb90d4b0684d30c177744c525";
+        //News_url = "https://newsapi.org/v2/everything?q=bitcoin&from=2019-11-27&sortBy=publishedAt&apiKey=399bcfeeb90d4b0684d30c177744c525";
+
         lv = (ListView) findViewById(R.id.news_list_view);
 
 
@@ -71,6 +99,13 @@ public class NewsActivity extends AppCompatActivity {
             }
 
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // Download complete. Let us update UI
+
+            newProgBar.setVisibility(View.GONE);
         }
 
     }
@@ -106,13 +141,22 @@ public class NewsActivity extends AppCompatActivity {
                 String image = post.optString("urlToImage");
                 String description = post.optString("description");
                 String url = post.optString("url");
+                String author = post.optString("author");
+                String time = post.optString("publishedAt");
+                String content = post.optString("content");
+
+                time = time.substring(0, 10);
+                Log.i("Zamanlaması", time);
                 //String source_name = source.optString("name");
                 item = new news_item();
                 item.setTitle(title);
                 item.setImage(image);
                 item.setUrl(url);
                 item.setDescription(description);
-                Log.i("HABER DESCTPİNTİONU", description);
+                item.setAuthor(author);
+                item.setTime(time);
+                item.setContent(content);
+                Log.i("HABER DESCTPİNTİONU", author);
                 //Log.i("SOURCE", source_name);
                 haberList.add(item);
                 //System.out.println("Data is:" + item.getTitle());
@@ -133,7 +177,29 @@ public class NewsActivity extends AppCompatActivity {
             }
         });
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                news_item item =(news_item) parent.getItemAtPosition(position);
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getUrl()));
+                Log.i("İtem bilgileri", item.getTitle());
+                Intent item_intent = new Intent(NewsActivity.this, News_content.class);
+                item_intent.putExtra("MyObject", item);
+                try{
+                    startActivity(item_intent);
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
     }
+
+
 
 
 

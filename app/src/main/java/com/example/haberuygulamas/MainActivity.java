@@ -20,16 +20,16 @@ public class MainActivity extends AppCompatActivity {
 
         CardView card1 = (CardView) findViewById(R.id.spor_card);
         CardView card2 = (CardView) findViewById(R.id.eco_card);
-        CardView card3 = (CardView) findViewById(R.id.world_card);
+        CardView card3 = (CardView) findViewById(R.id.science_card);
         CardView card4 = (CardView) findViewById(R.id.tech_card);
-        CardView card5 = (CardView) findViewById(R.id.cevre_card);
+        CardView card5 = (CardView) findViewById(R.id.health_card);
         CardView card6 = (CardView) findViewById(R.id.mgzn_card);
 
         card1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intn = new Intent(MainActivity.this, NewsActivity.class);
                 Bundle datas = new Bundle();
-                datas.putString(EXTRA_MESSAGE, "En Son Spor Haberleri");
+                datas.putString(EXTRA_MESSAGE, "1");
 
                 intn.putExtras(datas);
                 startActivity(intn);
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intn = new Intent(MainActivity.this, NewsActivity.class);
                 Bundle datas = new Bundle();
                 datas.putString(EXTRA_MESSAGE, "En Son Ekonomi Haberleri");
-
+                datas.putInt(EXTRA_MESSAGE, 1);
                 intn.putExtras(datas);
                 startActivity(intn);
             }
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intn = new Intent(MainActivity.this, NewsActivity.class);
                 Bundle datas = new Bundle();
-                datas.putString(EXTRA_MESSAGE, "En Son Dünya Haberleri");
+                datas.putString(EXTRA_MESSAGE, "En Son Bilim Haberleri");
 
                 intn.putExtras(datas);
                 startActivity(intn);
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intn = new Intent(MainActivity.this, NewsActivity.class);
                 Bundle datas = new Bundle();
-                datas.putString(EXTRA_MESSAGE, "En Son Çevre Haberleri");
+                datas.putString(EXTRA_MESSAGE, "En Son Sağlık Haberleri");
 
                 intn.putExtras(datas);
                 startActivity(intn);

@@ -52,6 +52,8 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
             row = inflater.inflate(layoutResourceId, parent, false);
             holder = new ViewHolder();
             holder.titleTextView = (TextView) row.findViewById(R.id.title);
+            holder.authorTextView = (TextView) row.findViewById(R.id.source);
+            holder.timeTextView = (TextView) row.findViewById(R.id.newsDate);
             holder.imageView = (ImageView) row.findViewById(R.id.img);
             holder.descriptionTextView = (TextView) row.findViewById(R.id.desc);
             row.setTag(holder);
@@ -71,6 +73,25 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
 
             holder.titleTextView.setVisibility(GONE);
         }
+
+        if (!TextUtils.isEmpty(Html.fromHtml(item.getAuthor()))) {
+
+            holder.authorTextView.setText(Html.fromHtml(item.getAuthor()));
+
+        } else {
+
+            holder.authorTextView.setVisibility(GONE);
+        }
+
+        if (!TextUtils.isEmpty(Html.fromHtml(item.getTime()))) {
+
+            holder.timeTextView.setText(Html.fromHtml(item.getTime()));
+
+        } else {
+
+            holder.authorTextView.setVisibility(GONE);
+        }
+
 
         if ((item.getDescription()).toString() != "null") {
 
@@ -101,6 +122,8 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
         TextView titleTextView;
         ImageView imageView;
         TextView descriptionTextView;
+        TextView authorTextView;
+        TextView timeTextView;
 
     }
 

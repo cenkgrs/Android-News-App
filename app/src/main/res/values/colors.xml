@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark">#302a2a</color>
     <color name="colorAccent">#D81B60</color>
     <color name="darkBlueNav">#0007A2</color>
     <color name="grayFont">#D6D6D6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="newspaper_chooser">#E7E1E1</color>
 
     <color name="darkGraybg">#3A3939</color>
+    <color name="perfectColor">#302a2a</color>
+    <color name="color">#5E5A5A</color>
+    <color name="lightgray">#A3A0A0</color>
+
 </resources>
