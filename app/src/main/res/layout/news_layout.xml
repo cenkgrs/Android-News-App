@@ -14,7 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/news_Linear_Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -32,17 +33,27 @@
                 android:textStyle="bold"
                 />
 
+            <ListView
+                android:id="@+id/news_list_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:columnWidth="85dp"
+                android:drawSelectorOnTop="true"
+                android:gravity="center"
+                android:numColumns="auto_fit"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="10dp"
+                android:focusable="true"
+                android:clickable="true"/>
 
 
 
-                <include  layout="@layout/news_item" android:id="@+id/news1" />
-                <include  layout="@layout/news_item" android:id="@+id/news2" />
-                <include  layout="@layout/news_item" android:id="@+id/news3" />
-                <include  layout="@layout/news_item" android:id="@+id/news4" />
-                <include  layout="@layout/news_item" android:id="@+id/news5" />
 
 
-        </LinearLayout>
+
+
+        </RelativeLayout>
 
     </ScrollView>
 

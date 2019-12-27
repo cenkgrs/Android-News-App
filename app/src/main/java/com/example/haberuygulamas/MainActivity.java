@@ -1,17 +1,17 @@
 package com.example.haberuygulamas;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE="mystring";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +89,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void choose_card(){
-
-    }
-
-    public void fill(){
-
-    }
 }
