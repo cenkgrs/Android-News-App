@@ -41,24 +41,24 @@ public class NewsActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-        String header = extras.getString(MainActivity.EXTRA_MESSAGE);
+        String header = intent.getStringExtra("id");
+        System.out.println("Header::" +header);
         newProgBar = (ProgressBar) findViewById(R.id.progress_load_photo);
-        if(header == "1"){
+        if(header.equals("1")){
             System.out.println("Sports news");
             News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=sports&apiKey=399bcfeeb90d4b0684d30c177744c525";
         }
-        else if(header == "En Son Teknoloji Haberleri"){
-            News_url = "https://newsapi.org/v2/top-headlines?country=tr&apiKey=399bcfeeb90d4b0684d30c177744c525";
-        }
-        else if(header == "En Son Ekonomi Haberleri"){
+        else if(header.equals("2")){
             News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=business&apiKey=399bcfeeb90d4b0684d30c177744c525";
         }
-        else if(header == "En Son Sağlık Haberleri"){
-            News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=health&apiKey=399bcfeeb90d4b0684d30c177744c525";
-        }
-        else if(header == "En Son Bilim Haberleri"){
+        else if(header.equals("3")){
             News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=science&apiKey=399bcfeeb90d4b0684d30c177744c525";
+        }
+        else if(header.equals("4")){
+            News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=technology&apiKey=399bcfeeb90d4b0684d30c177744c525";
+        }
+        else if(header.equals("5")){
+            News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=health&apiKey=399bcfeeb90d4b0684d30c177744c525";
         }
         else{
             System.out.println("Default news");

@@ -1,11 +1,14 @@
 package com.example.haberuygulamas;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -19,9 +22,16 @@ import static android.view.View.GONE;
 
 public class News_content extends AppCompatActivity {
 
+    private Button urlButton;
+
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_content);
 
@@ -30,7 +40,7 @@ public class News_content extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        news_item new_item = (news_item)i.getSerializableExtra("MyObject");
+        final news_item new_item = (news_item)i.getSerializableExtra("MyObject");
 
         //Başlık
         TextView titleTextView = (TextView) findViewById(R.id.content_title);
@@ -67,6 +77,16 @@ public class News_content extends AppCompatActivity {
             dateTextView.setVisibility(GONE);
         }
 
+        urlButton = (Button) findViewById(R.id.content_url);
+        urlButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(new_item.getUrl()));
+
+                startActivity(browserIntent);
+            }
+        });
+
     }
 
     private void setSupportActionBar(Toolbar toolbar) {
@@ -82,6 +102,9 @@ public class News_content extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 
 
 

@@ -1,7 +1,14 @@
 <resources>
-    <string name="app_name">Haberlerim</string>
+    <string name="app_name">Haberler</string>
     <string name="news_activity_title">Popüler Haberler</string>
     <string name="news_header">En Son Haberler</string>
     <string name="header">Başlık</string>
     <string name="source">Kaynak</string>
+    <string name="news_source_link">Haberin Kaynağı</string>
+    <string name="science">Bilim</string>
+    <string name="sport">Spor</string>
+    <string name="technology">Teknoloji</string>
+    <string name="economy">Ekonomi</string>
+    <string name="health">Sağlık</string>
+    <string name="choose_cat">Kategori Seç</string>
 </resources>
