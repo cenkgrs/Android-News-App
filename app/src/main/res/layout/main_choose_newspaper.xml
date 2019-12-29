@@ -54,14 +54,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/color"
-                    android:foreground="@drawable/sport_card">
+                    >
 
                     <ImageView
                         android:id="@+id/spor_img"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_alignBottom="@+id/img"
-                        android:src="@drawable/bottom_shadow" />
+                        android:src="@drawable/bottom_shadow"
+
+                        android:foreground="@drawable/sporimg"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -106,7 +108,7 @@
                         android:layout_height="80dp"
                         android:layout_alignBottom="@+id/img"
                         android:src="@drawable/bottom_shadow"
-                        android:foreground="@drawable/eco_card"/>
+                        android:foreground="@drawable/ecoimg"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -150,7 +152,7 @@
                         android:layout_height="80dp"
                         android:layout_alignBottom="@+id/img"
                         android:src="@drawable/bottom_shadow"
-                        android:background="@drawable/science"/>
+                        android:foreground="@drawable/scienceimg"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -192,7 +194,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_alignBottom="@+id/img"
-                        android:src="@drawable/bottom_shadow" />
+                        android:src="@drawable/bottom_shadow"
+                        android:foreground="@drawable/techimg"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -234,7 +237,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_alignBottom="@+id/img"
-                        android:src="@drawable/bottom_shadow" />
+                        android:src="@drawable/bottom_shadow"
+                        android:foreground="@drawable/healthimg"/>
 
                     <TextView
                         android:layout_width="match_parent"

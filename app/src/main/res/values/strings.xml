@@ -11,4 +11,9 @@
     <string name="economy">Ekonomi</string>
     <string name="health">Sağlık</string>
     <string name="choose_cat">Kategori Seç</string>
+    <string name="notification_title">Haberlerim</string>
+    <string name="notification_content">Yeni gelen haberleri incelediniz mi ?</string>
+    <string name="doviz">Döviz Bilgileri</string>
+    <string name="guardians">Guardian</string>
+    <string name="newsapi">News Api</string>
 </resources>

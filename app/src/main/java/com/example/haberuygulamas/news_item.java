@@ -10,6 +10,16 @@ public class news_item implements Serializable {
     private String source;
     private String author;
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    private String category;
+
     public String getContent() {
         return content;
     }

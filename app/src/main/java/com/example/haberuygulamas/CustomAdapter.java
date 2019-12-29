@@ -25,24 +25,20 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
 
     public CustomAdapter(Context context, int layoutResourceId, ArrayList<news_item> haberList) {
         super(context, layoutResourceId, haberList);
-        System.out.println("Adapter created");
+
         this.layoutResourceId = layoutResourceId;
-        System.out.println(layoutResourceId);
         this.context = context;
-        System.out.println(context);
         this.haberList = haberList;
-        System.out.println(haberList);
+
     }
 
     public void setListData(ArrayList<news_item> haberList){
         this.haberList = haberList;
         notifyDataSetChanged();
-        System.out.println("Got here so far 1");
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        System.out.println("Got here so far 2");
         View row = convertView;
 
         ViewHolder holder;
@@ -74,7 +70,7 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
             holder.titleTextView.setVisibility(GONE);
         }
 
-        if (!TextUtils.isEmpty(Html.fromHtml(item.getAuthor()))) {
+        if (!TextUtils.isEmpty(Html.fromHtml(item.getAuthor())) && item.getAuthor().toString() != "null") {
 
             holder.authorTextView.setText(Html.fromHtml(item.getAuthor()));
 
@@ -101,7 +97,7 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
             holder.descriptionTextView.setVisibility(GONE);
 
         }
-
+        System.out.println("İmage:"+ item.getImage());
         if ((item.getImage()).toString() != "null" && !TextUtils.isEmpty(item.getImage())) {
 
             Picasso.get().load(item.getImage()).into(holder.imageView);

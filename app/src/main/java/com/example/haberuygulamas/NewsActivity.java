@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -31,38 +32,37 @@ public class NewsActivity extends AppCompatActivity {
     private String News_url;
     private ProgressBar newProgBar;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_layout);
 
-
-
         Intent intent = getIntent();
         String header = intent.getStringExtra("id");
-        System.out.println("Header::" +header);
         newProgBar = (ProgressBar) findViewById(R.id.progress_load_photo);
+        Button doviz_btn = (Button) findViewById(R.id.doviz_btn);
         if(header.equals("1")){
-            System.out.println("Sports news");
             News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=sports&apiKey=399bcfeeb90d4b0684d30c177744c525";
+            doviz_btn.setVisibility(View.GONE);
         }
         else if(header.equals("2")){
             News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=business&apiKey=399bcfeeb90d4b0684d30c177744c525";
         }
         else if(header.equals("3")){
             News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=science&apiKey=399bcfeeb90d4b0684d30c177744c525";
+            doviz_btn.setVisibility(View.GONE);
         }
         else if(header.equals("4")){
             News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=technology&apiKey=399bcfeeb90d4b0684d30c177744c525";
+            doviz_btn.setVisibility(View.GONE);
         }
         else if(header.equals("5")){
             News_url = "https://newsapi.org/v2/top-headlines?country=tr&category=health&apiKey=399bcfeeb90d4b0684d30c177744c525";
+            doviz_btn.setVisibility(View.GONE);
         }
         else{
-            System.out.println("Default news");
             News_url = "https://newsapi.org/v2/top-headlines?country=tr&apiKey=399bcfeeb90d4b0684d30c177744c525";
+            doviz_btn.setVisibility(View.GONE);
         }
         //TextView txv = (TextView) findViewById(R.id.news_header);
         //txv.setText(header);
@@ -71,10 +71,7 @@ public class NewsActivity extends AppCompatActivity {
 
         lv = (ListView) findViewById(R.id.news_list_view);
 
-
         haberList = new ArrayList<>();
-
-
 
         new AsyncHttpTask().execute(News_url);
     }
@@ -135,8 +132,6 @@ public class NewsActivity extends AppCompatActivity {
             news_item item;
             for (int i = 0; i < posts.length(); i++){
                 JSONObject post = posts.optJSONObject(i);
-                /*JSONArray sources = post.optJSONArray("sources");
-                JSONObject source = sources.optJSONObject(0);*/
                 String title = post.optString("title");
                 String image = post.optString("urlToImage");
                 String description = post.optString("description");
@@ -144,10 +139,7 @@ public class NewsActivity extends AppCompatActivity {
                 String author = post.optString("author");
                 String time = post.optString("publishedAt");
                 String content = post.optString("content");
-
                 time = time.substring(0, 10);
-                Log.i("Zamanlaması", time);
-                //String source_name = source.optString("name");
                 item = new news_item();
                 item.setTitle(title);
                 item.setImage(image);
@@ -156,11 +148,7 @@ public class NewsActivity extends AppCompatActivity {
                 item.setAuthor(author);
                 item.setTime(time);
                 item.setContent(content);
-                Log.i("HABER DESCTPİNTİONU", author);
-                //Log.i("SOURCE", source_name);
                 haberList.add(item);
-                //System.out.println("Data is:" + item.getTitle());
-
             }
 
         } catch (Exception e) {
@@ -172,8 +160,6 @@ public class NewsActivity extends AppCompatActivity {
             public void run() {
                 adp = new CustomAdapter(NewsActivity.this, R.layout.news_item, haberList);
                 lv.setAdapter(adp);
-                // Stuff that updates the UI
-
             }
         });
 
@@ -192,15 +178,7 @@ public class NewsActivity extends AppCompatActivity {
                 catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
         });
-
-
     }
-
-
-
-
-
 }

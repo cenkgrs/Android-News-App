@@ -34,6 +34,17 @@
                     android:layout_marginLeft="10dp"/>
 
             </Toolbar>
+
+            <Button
+                android:clickable="true"
+                android:id="@+id/doviz_btn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/doviz"
+                android:textSize="11sp"
+                android:background="@drawable/ecoimg"
+
+                />
             <!--
             <TextView
                 android:id="@+id/news_header"
@@ -55,6 +66,9 @@
                 android:layout_centerInParent = "true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+
+
             <ListView
                 android:id="@+id/news_list_view"
                 android:layout_width="fill_parent"

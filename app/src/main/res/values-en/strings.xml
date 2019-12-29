@@ -11,4 +11,9 @@
     <string name="economy">Economy</string>
     <string name="health">Health</string>
     <string name="choose_cat">Choose Category</string>
+    <string name="notification_title">News App</string>
+    <string name="notification_content">Did you see the new news ?</string>
+    <string name="doviz">Döviz Bilgileri</string>
+    <string name="guardians">Guardian</string>
+    <string name="newsapi">News Api</string>
 </resources>
