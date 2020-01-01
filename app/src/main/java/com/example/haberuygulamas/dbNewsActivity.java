@@ -3,7 +3,6 @@ package com.example.haberuygulamas;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -35,18 +34,22 @@ public class dbNewsActivity extends AppCompatActivity {
 
         if(category.equals("1")){
             doviz_btn.setVisibility(View.GONE);
+            category = "sport";
         }
         else if(category.equals("2")){
-
+            category = "business";
         }
         else if(category.equals("3")){
             doviz_btn.setVisibility(View.GONE);
+            category = "science";
         }
         else if(category.equals("4")){
             doviz_btn.setVisibility(View.GONE);
+            category = "tech";
         }
         else if(category.equals("5")){
             doviz_btn.setVisibility(View.GONE);
+            category = "health";
         }
         else{
             doviz_btn.setVisibility(View.GONE);
@@ -56,10 +59,8 @@ public class dbNewsActivity extends AppCompatActivity {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
 
-        ArrayList<news_item> List = databaseAccess.getQuotes(newspaper);
+        ArrayList<news_item> List = databaseAccess.getQuotes(newspaper, category);
 
-        //List = databaseAccess.getQuotes(newspaper);
-        System.out.println(List);
         databaseAccess.close();
 
         adp = new CustomAdapter(dbNewsActivity.this, R.layout.news_item, List);
@@ -73,7 +74,6 @@ public class dbNewsActivity extends AppCompatActivity {
                 news_item item =(news_item) parent.getItemAtPosition(position);
 
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getUrl()));
-                Log.i("İtem bilgileri", item.getTitle());
                 Intent item_intent = new Intent(dbNewsActivity.this, News_content.class);
                 item_intent.putExtra("MyObject", item);
                 try{

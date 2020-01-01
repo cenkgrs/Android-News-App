@@ -24,7 +24,6 @@ public class SourceChooser  extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intn = new Intent(SourceChooser.this, MainActivity.class);
                 intn.putExtra("id", "1");
-                System.out.println("Clicked");
                 startActivity(intn);
             }
         });
@@ -32,7 +31,6 @@ public class SourceChooser  extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intn = new Intent(SourceChooser.this, MainActivity.class);
                 intn.putExtra("id", "2");
-
                 startActivity(intn);
             }
         });

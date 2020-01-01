@@ -16,4 +16,5 @@
     <string name="doviz">Döviz Bilgileri</string>
     <string name="guardians">Guardian</string>
     <string name="newsapi">News Api</string>
+    <string name="share_url">Share</string>
 </resources>

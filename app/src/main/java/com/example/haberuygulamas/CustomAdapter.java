@@ -64,12 +64,10 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
         if (!TextUtils.isEmpty(Html.fromHtml(item.getTitle()))) {
 
             holder.titleTextView.setText(Html.fromHtml(item.getTitle()));
-
         } else {
 
             holder.titleTextView.setVisibility(GONE);
         }
-
         if (!TextUtils.isEmpty(Html.fromHtml(item.getAuthor())) && item.getAuthor().toString() != "null") {
 
             holder.authorTextView.setText(Html.fromHtml(item.getAuthor()));
@@ -78,7 +76,6 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
 
             holder.authorTextView.setVisibility(GONE);
         }
-
         if (!TextUtils.isEmpty(Html.fromHtml(item.getTime()))) {
 
             holder.timeTextView.setText(Html.fromHtml(item.getTime()));
@@ -87,8 +84,6 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
 
             holder.authorTextView.setVisibility(GONE);
         }
-
-
         if ((item.getDescription()).toString() != "null") {
 
             holder.descriptionTextView.setText(Html.fromHtml(item.getDescription()));
@@ -97,8 +92,7 @@ public class CustomAdapter extends ArrayAdapter<news_item> {
             holder.descriptionTextView.setVisibility(GONE);
 
         }
-        System.out.println("İmage:"+ item.getImage());
-        if ((item.getImage()).toString() != "null" && !TextUtils.isEmpty(item.getImage())) {
+        if (!TextUtils.isEmpty(item.getImage())) {
 
             Picasso.get().load(item.getImage()).into(holder.imageView);
 

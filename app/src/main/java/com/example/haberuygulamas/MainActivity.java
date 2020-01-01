@@ -21,28 +21,22 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String newspaper_id = intent.getStringExtra("id");
-        System.out.println("newspaper_id:"+ newspaper_id);
 
         if(newspaper_id.equals("1")){
-            System.out.println("NEWS API");
             activity = "NewsActivity";
             newspaper = "newsapi";
         }
         else if ( newspaper_id.equals("2")){
-            System.out.println("guardian ");
              newspaper = "Guardian";
              activity = "dbNewsActivity";
         }
         else if ( newspaper_id.equals("3")){
-            System.out.println("bbc");
             newspaper = "bbc";
         }
         else if ( newspaper_id.equals("4")){
-            System.out.println("cnn");
             newspaper = "cnn";
         }
         else{
-            System.out.println("asd");
             newspaper = "guardian";
         }
 
@@ -55,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         card1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if( activity == "NewsActivity"){
-                    System.out.println("Will open news activity");
                     Intent intn = new Intent(MainActivity.this, NewsActivity.class);
                     intn.putExtra("id", "1");
                     startActivity(intn);

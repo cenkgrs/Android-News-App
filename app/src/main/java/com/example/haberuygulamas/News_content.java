@@ -29,8 +29,7 @@ import static android.view.View.GONE;
 public class News_content extends AppCompatActivity {
 
     private Button urlButton;
-
-
+    private Button shareButton;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -68,7 +67,7 @@ public class News_content extends AppCompatActivity {
 
         //Resim
         ImageView imageView = (ImageView) findViewById(R.id.content_image);
-        if ((new_item.getImage()).toString() != "null" && !TextUtils.isEmpty(new_item.getImage())) {
+        if (!TextUtils.isEmpty(new_item.getImage())) {
             Picasso.get().load(new_item.getImage()).into(imageView);
         } else {
             imageView.setImageResource(R.drawable.background);
@@ -93,9 +92,22 @@ public class News_content extends AppCompatActivity {
             }
         });
 
-        if(Build.VERSION.SDK_INT  >= Build.VERSION_CODES.O) {
-            showNotification();
-        }
+        shareButton = (Button) findViewById(R.id.share_url);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+                Uri link = Uri.parse(new_item.getUrl());
+                shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Trip from Voyajo");
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml(" "+ link));
+                shareIntent.setType("text/plain");
+                startActivity(Intent.createChooser(shareIntent, "Share the News"));
+
+
+            }
+        });
+
+
 
     }
 
@@ -113,7 +125,9 @@ public class News_content extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void showNotification(){
+
+
+    public void showNotification(){
         String title = getResources().getString(R.string.notification_title);
         String content = getResources().getString(R.string.notification_content);
 
@@ -144,14 +158,20 @@ public class News_content extends AppCompatActivity {
                 .setChannelId("my_channel")
                 .build();
 
-        Intent notificationIntent = new Intent(this,MainActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this,0,notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent notificationIntent = new Intent(this,NewsActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this,0,notificationIntent, 0);
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
         builder.setContentIntent(contentIntent);
 
-
-
-
         manager.notify(0,notification);
+    }
+
+    @Override
+    protected void onDestroy () {
+        super .onDestroy(); ;
+        if(Build.VERSION.SDK_INT  >= Build.VERSION_CODES.O) {
+            showNotification();
+        }
     }
 
 

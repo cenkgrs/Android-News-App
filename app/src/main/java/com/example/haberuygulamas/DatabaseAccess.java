@@ -13,21 +13,10 @@ public class DatabaseAccess {
     private SQLiteDatabase database;
     private static DatabaseAccess instance;
 
-    /**
-     * Private constructor to aboid object creation from outside classes.
-     *
-     * @param context
-     */
     private DatabaseAccess(Context context) {
         this.openHelper = new DatabaseOpenHelper(context);
     }
 
-    /**
-     * Return a singleton instance of DatabaseAccess.
-     *
-     * @param context the Context
-     * @return the instance of DabaseAccess
-     */
     public static DatabaseAccess getInstance(Context context) {
         if (instance == null) {
             instance = new DatabaseAccess(context);
@@ -35,32 +24,22 @@ public class DatabaseAccess {
         return instance;
     }
 
-    /**
-     * Open the database connection.
-     */
     public void open() {
         this.database = openHelper.getWritableDatabase();
     }
 
-    /**
-     * Close the database connection.
-     */
+
     public void close() {
         if (database != null) {
             this.database.close();
         }
     }
 
-    /**
-     * Read all quotes from the database.
-     *
-     * @return a List of quotes
-     */
-    public ArrayList<news_item> getQuotes(String newspaper) {
+    public ArrayList<news_item> getQuotes(String newspaper, String cat) {
         System.out.println("Got here");
         ArrayList<news_item> list = new ArrayList<>();
-
-        Cursor cursor = database.rawQuery("SELECT * FROM news WHERE source == 'Guardian'" , null);
+        String sql = "SELECT * FROM news WHERE category ='"+cat+"' and source = '"+newspaper+"'";
+        Cursor cursor = database.rawQuery(sql , null);
         cursor.moveToFirst();
         news_item item;
         while (!cursor.isAfterLast()) {
@@ -74,9 +53,7 @@ public class DatabaseAccess {
             String author = cursor.getString(6);
             String time = cursor.getString(7);
             String content = cursor.getString(4);
-            System.out.println("title"+title);
-            System.out.println("title"+image);
-            System.out.println("title"+url);
+
             item = new news_item();
             item.setTitle(title);
             item.setCategory(category);
@@ -86,7 +63,7 @@ public class DatabaseAccess {
             item.setAuthor(author);
             item.setTime(time);
             item.setContent(content);
-            System.out.println("İtem bilgileri"+ item);
+
             list.add(item);
             cursor.moveToNext();
         }
