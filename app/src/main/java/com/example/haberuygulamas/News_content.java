@@ -35,13 +35,20 @@ public class News_content extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_content);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.navigation);
-        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Implemented by activity
+            }
+        });
+
+
+
 
         Intent i = getIntent();
 
@@ -98,7 +105,7 @@ public class News_content extends AppCompatActivity {
             public void onClick(View v) {
                 final Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                 Uri link = Uri.parse(new_item.getUrl());
-                shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Trip from Voyajo");
+                shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Important News ");
                 shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml(" "+ link));
                 shareIntent.setType("text/plain");
                 startActivity(Intent.createChooser(shareIntent, "Share the News"));
@@ -107,23 +114,9 @@ public class News_content extends AppCompatActivity {
             }
         });
 
-
-
     }
 
-    private void setSupportActionBar(Toolbar toolbar) {
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home){
-            this.finish();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
 
 

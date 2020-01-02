@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -64,8 +65,15 @@ public class NewsActivity extends AppCompatActivity {
             News_url = "https://newsapi.org/v2/top-headlines?country=tr&apiKey=399bcfeeb90d4b0684d30c177744c525";
             doviz_btn.setVisibility(View.GONE);
         }
-        //TextView txv = (TextView) findViewById(R.id.news_header);
-        //txv.setText(header);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.navigation);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Implemented by activity
+            }
+        });
 
         //News_url = "https://newsapi.org/v2/everything?q=bitcoin&from=2019-11-27&sortBy=publishedAt&apiKey=399bcfeeb90d4b0684d30c177744c525";
 

@@ -35,8 +35,7 @@ public class DatabaseAccess {
         }
     }
 
-    public ArrayList<news_item> getQuotes(String newspaper, String cat) {
-        System.out.println("Got here");
+    public ArrayList<news_item> getNews(String newspaper, String cat) {
         ArrayList<news_item> list = new ArrayList<>();
         String sql = "SELECT * FROM news WHERE category ='"+cat+"' and source = '"+newspaper+"'";
         Cursor cursor = database.rawQuery(sql , null);

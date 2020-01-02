@@ -20,6 +20,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <Toolbar
+
+                android:id="@+id/navigation"
+                android:navigationIcon="?attr/homeAsUpIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/perfectColor"
+                >
+
+            </Toolbar>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

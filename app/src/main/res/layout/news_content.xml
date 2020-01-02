@@ -18,17 +18,11 @@
             <Toolbar
 
                 android:id="@+id/navigation"
+                android:navigationIcon="?attr/homeAsUpIndicator"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="?attr/actionBarSize"
                 android:background="@color/perfectColor"
                 >
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_search"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"/>
 
             </Toolbar>
 
@@ -68,9 +62,9 @@
                 <ImageView
 
                     android:layout_width="wrap_content"
-                    android:layout_height="14dp"
+                    android:layout_height="10dp"
                     android:layout_marginRight="5dp"
-                    android:src="@drawable/ic_date"/>
+                    android:src="@drawable/ic_date" />
 
                 <TextView
                     android:id="@+id/content_date"

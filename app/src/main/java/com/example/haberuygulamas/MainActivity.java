@@ -3,6 +3,7 @@ package com.example.haberuygulamas;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -39,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
         else{
             newspaper = "guardian";
         }
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.navigation);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Implemented by activity
+            }
+        });
 
         CardView card1 = (CardView) findViewById(R.id.spor_card);
         CardView card2 = (CardView) findViewById(R.id.eco_card);

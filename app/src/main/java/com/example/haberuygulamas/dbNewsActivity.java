@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -55,11 +56,20 @@ public class dbNewsActivity extends AppCompatActivity {
             doviz_btn.setVisibility(View.GONE);
         }
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.navigation);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed(); // Implemented by activity
+            }
+        });
+
         this.listView = (ListView) findViewById(R.id.news_list_view);
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
 
-        ArrayList<news_item> List = databaseAccess.getQuotes(newspaper, category);
+        ArrayList<news_item> List = databaseAccess.getNews(newspaper, category);
 
         databaseAccess.close();
 
